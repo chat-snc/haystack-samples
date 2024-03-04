@@ -5,7 +5,7 @@ from haystack.nodes import Crawler, PreProcessor, BM25Retriever, FARMReader
 
 
 crawler = Crawler(
-    urls=["https://www.parsons.com/locations/"],
+    urls=["https://www.jomashop.com/montblanc-heritage-brown-dial-mens-watch-128671.html"],
     crawler_depth=1,
     output_dir="crawled_files",
 )
@@ -18,7 +18,7 @@ preprocessor = PreProcessor(
     clean_empty_lines=True,
     clean_whitespace=True,
     clean_header_footer=False,
-    split_by="sentence",
+    split_by="word",
     split_length=500,
     split_respect_sentence_boundary=True,
 )
@@ -44,7 +44,7 @@ query_pipeline.add_node(component=reader, name="reader",
                         inputs=["retriever"])
 
 
-results = query_pipeline.run(query="What is the location of Parsons?")
+results = query_pipeline.run(query="how much is the montblanc watch?")
 
 print("\nQuestion: ", results["query"])
 print("\nAnswers:")

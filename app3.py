@@ -53,7 +53,7 @@ if question:
                          name="BM25Retriever", inputs=["Query"])
     qa_pipeline.add_node(component=reader, name="FARMReader",
                          inputs=["BM25Retriever"])
-
+    print(question)
     # Run the pipeline
     results = qa_pipeline.run(query=question)
 
